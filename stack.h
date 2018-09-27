@@ -101,6 +101,11 @@ public:
         delete[] data;
     }
 
+
+
+
+
+
     bool empty() const
     {
       if (numElements == 0)
@@ -132,14 +137,9 @@ public:
    {
       if (bufferSize <= numElements)
       {
-         if (bufferSize == 0)
-         {
-           bufferSize = 1;
-         }
-         else
-         {
-           bufferSize = bufferSize * 2;
-         }
+
+         bufferSize = bufferSize + 1;
+
          T* newBuffer = new T[bufferSize];
          for (int i = 0; i < numElements; ++i)
          {
