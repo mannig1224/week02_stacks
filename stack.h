@@ -153,7 +153,42 @@ public:
 
    }
 
+   T top() throw(const char*)
+   {
+      if (numElements != 0)
+      {
+         return data[numElements -1]
+      }
+      else
+      {
+         throw "ERROR: Unable to allocate a new buffer for Stack";
+      }
+   }
 
+
+   void pop()
+   {
+      delete[] data[numElements - 1]
+      numElements--;
+   }
+
+   //Overload the "=" operator
+   stack& operator=(const stack& rhs) throw(const char*)
+   {
+       numElements = 0;
+       if (bufferSize <= rhs.size())
+       {
+         delete[] data;
+         data = new T [rhs.size()];
+       }
+
+         numElements = rhs.size();
+
+       for (int i = 0; i < numElements; i++)
+           data[i] = rhs[i];
+
+       return *this;
+   }
 };
 
 #endif // stack_H
